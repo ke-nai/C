@@ -60,3 +60,59 @@ free(arr[0]);
 free(arr);
 ```
 이렇게 간단하게 해제해 줄 수 있다.
+
+### 간단한 파일 입출력
+* 단순한 숫자 데이터를 읽고 쓰는 간단한 용도
+
+#### 1. 파일 이름 지정
+##### 콘솔 창에 입력해서 받기
+```
+char file[1024];
+printf("file name? ");
+scanf("%s",file);
+```
+##### 코드에서 지정해두기
+```
+char file[] = "file.txt";
+```
+#### 2. 파일에서 숫자 읽기
+##### 1) 파일 열기
+```
+FILE *fp;
+fopen_s(&fp, file, "r"); // read 모드
+```
+##### 2) 파일에서 숫자 읽기
+```
+int num;
+fscanf_s(fp, "%d", &num);
+```
+#### 3. 파일에 숫자 쓰기
+##### 1) 파일 열기
+```
+FILE *fp;
+fopen_s(&fp, file, "w"); // write 모드
+```
+##### 2) 파일에 숫자 쓰기
+```
+int num = 0;
+fprintf(fp, "%d", num);
+```
+
+####4. 참고
+```
+int mat[rows][cols];
+
+/.../ mat 값 추가
+
+FILE* fp;
+fopen_s(&fp, "output.csv", "w");
+
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+        fprintf(fp, "%d", mat[i][j]);
+        fprintf(fp, ",");
+    }
+    fprintf(fp, "\n");
+}
+```
+만약 내보내려는 파일이 csv, 엑셀 형태라면 이런 식으로 내보내면 된다.
