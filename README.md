@@ -101,7 +101,7 @@ int num = 0;
 fprintf(fp, "%d", num);
 ```
 
-####4. 참고
+#### 4. 참고
 ```
 int mat[rows][cols];
 
